@@ -2,6 +2,8 @@ export { default as Main } from "./Main/Main";
 export { default as Header } from "./Header/Header";
 export { default as TodoList } from "./TodoList/TodoList";
 export { default as TodoItem } from "./TodoList/TodoItem/TodoItem";
+export { default as EditItem } from "./SameDateTodo/EditIem/EditItem";
+export { default as SameDateTodoItem } from "./SameDateTodo/Todo/Todo";
 
 //shared
 export { default as Button } from "../shared/Button/Button";

@@ -5,26 +5,31 @@ export interface TodoListType {
   todoName: string;
   date: string;
   isHidden: boolean;
+  number: number;
 }
 
 const todoList: TodoListType[] = [
+
   {
     id: 1,
     todoName: "Finish my React.js tasks",
     date: "20.12.1994",
     isHidden: false,
+    number: 1,
   },
   {
     id: 2,
     todoName: "Learn Next.js",
     date: "20.12.1994",
     isHidden: false,
+    number: 1,
   },
   {
     id: 3,
     todoName: "Learn Node.js",
     date: "20.12.1994",
     isHidden: false,
+    number: 1,
   },
 ];
 
@@ -33,6 +38,17 @@ export const todoSlice = createSlice({
   initialState: todoList,
   reducers: {
     addTodo: (state, action) => {
+      // let number;
+      // let bool = false;
+
+      // for (let i = 0; i < state.date.length; i++) {
+      //   if (state.dates[i]?.date === action.date) {
+      //     number = state.dates[i]?.number + 1;
+      //     bool = true;
+      //   }
+      // }
+
+      // if (!bool) number = 1;
       return [
         ...state,
         {
@@ -40,6 +56,7 @@ export const todoSlice = createSlice({
           todoName: action.payload.title,
           date: action.payload.date,
           isHidden: false,
+          number: action.payload.number,
         },
       ];
     },
