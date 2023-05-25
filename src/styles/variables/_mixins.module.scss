@@ -1,0 +1,15 @@
+@import "./colors.module";
+
+@mixin boxStyle($height: 112px, $justify-content: space-between) {
+  width: 614px;
+  height: $height;
+  padding: 1% 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify-content;
+  background-color: $headerBGColor;
+}
+
+
+

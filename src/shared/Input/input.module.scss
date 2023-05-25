@@ -1,0 +1,16 @@
+@import "../../styles/variables/colors.module";
+
+.input {
+  width: 200px;
+  height: 6vh;
+  padding: 2%;
+  margin: 0 1%;
+  border: none;
+  font-size: 1.8rem;
+  color: $inputPlaceholderColor;
+  background: $inputBGColor;
+  border-radius: 4px;
+  &::placeholder {
+    color: $inputPlaceholderColor;
+  }
+}

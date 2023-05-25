@@ -1,0 +1,13 @@
+@import "../../styles/variables/colors.module";
+@import "../../styles/variables/mixins.module";
+
+.wrapper {
+  @include boxStyle(flex-start);
+  margin-top: 5%;
+  width: 614px;
+  min-height: 30vh;
+  padding: 2%;
+  .text {
+    margin-bottom: 2%;
+  }
+}
