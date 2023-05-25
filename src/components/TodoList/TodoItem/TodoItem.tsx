@@ -8,14 +8,13 @@ interface DataType {
 }
 
 const TodoItem: React.FC<DataType> = ({ date, number }) => {
+  const reverseDate = date.split(".").reverse().join("-");
   return (
     <div className={styles.item}>
-      {date} {"("}
-      {number}
-      {")"}
-      <Link to="/todoListByDate">
+      {reverseDate} {`(${number})`}
+      <Link to={`/todoListByDate/${date}`}>
         <button onClick={() => console.log(1)} className={styles.image}>
-          <img alt="" src={Next} />
+          <img  src={Next} alt="next" />
         </button>
       </Link>
     </div>

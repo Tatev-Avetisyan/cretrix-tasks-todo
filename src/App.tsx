@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/todoListByDate" element={<SameDateTodoList />} />
+        <Route path="/todoListByDate/:date" element={<SameDateTodoList />} />
       </Routes>
     </BrowserRouter>
   );

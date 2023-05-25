@@ -1,4 +1,5 @@
 @import "../../styles/variables/mixins.module";
+@import "../../styles/variables/colors.module";
 
 .wrapper {
   position: absolute;
@@ -8,44 +9,46 @@
   padding: 1.5%;
   left: 389px;
   top: 226px;
-  background: #ffffff;
+  background: $inputBGColor;
   border-radius: 8px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  .taskList {
-    @include boxStyle(flex-start);
-    .header {
-      width: 50%;
+  .header {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2%;
+    gap: 5%;
+    .backBtn {
+      background-color: $inputBGColor;
+      color: #2b2b2b;
+      font-weight: 700;
+      font-size: 1.6rem;
+      gap: 10%;
+      width: 120px;
+      height: 48px;
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: space-around;
-      margin-bottom: 2%;
-      .backBtn {
-        background-color: $headerBGColor;
-        color: #2b2b2b;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        width: 120px;
-        border: none;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-      .text {
-        font-family: "Open Sans";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 32px;
-        display: flex;
-        align-items: center;
+      border: 1px solid #f2f2f7;
+      border-radius: 4px;
+      &:hover {
+        cursor: pointer;
       }
     }
+    .text {
+      font-family: "Open Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 32px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .taskList {
+    @include boxStyle(flex-start);
   }
 }

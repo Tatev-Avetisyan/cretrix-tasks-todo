@@ -1,0 +1,43 @@
+@import "../../../styles/variables/colors.module";
+
+.wrapper {
+  margin-top: 2%;
+  padding: 1%;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid $inputBorderColor;
+  .inputPart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30%;
+    width: 100%;
+    height: 8vh;
+    background-color: $inputBGColor;
+    .input {
+      width: 100%;
+    }
+    .btnWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    
+      .btn {
+        background-color: $inputBGColor;
+        height: 3.5vh;
+        font-size: 1.6rem;
+        color: $blueTextColor;
+      }
+      .cancelBtn {
+        color: $inputPlaceholderColor;
+        background-color: $inputBGColor;
+        height: 3.5vh;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

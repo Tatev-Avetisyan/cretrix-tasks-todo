@@ -1,7 +1,7 @@
 import { SameDateTodoItem, Title } from "..";
-import { useNavigate } from "react-router-dom";
 import BackIcon from "../../assets/backIcon.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { TodoListType, deleteTodo, todo } from "../../redux/TodoSlice";
 
 import styles from "./sameDateTodo.module.scss";
@@ -10,22 +10,30 @@ const SameDateTodoList = () => {
   const dispatch = useDispatch();
   const todoList = useSelector(todo);
   const navigate = useNavigate();
+  const { date } = useParams();
+
+  const reverseDate = date?.split(".").reverse().join("-");
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  const filteredByDate = todoList.filter(
+    (el: TodoListType) => el.date === date
+  );
+  console.log(filteredByDate);
+
   return (
     <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <button onClick={handleGoBack} className={styles.backBtn}>
+          <img src={BackIcon} alt="Back" />
+          Go Back
+        </button>
+        <Title extraStyle={styles.text} context={reverseDate || ""} />
+      </div>
       <div className={styles.taskList}>
-        <div className={styles.header}>
-          <button onClick={handleGoBack} className={styles.backBtn}>
-            <img alt="" src={BackIcon} />
-            Go Back
-          </button>
-          <Title extraStyle={styles.text} context="2020-01-02 (3)" />
-        </div>
-        {todoList.map((item: TodoListType) => {
+        {filteredByDate.map((item: TodoListType) => {
           return (
             <div
               key={item.id}

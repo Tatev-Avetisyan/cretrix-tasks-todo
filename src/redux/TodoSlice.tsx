@@ -6,30 +6,37 @@ export interface TodoListType {
   date: string;
   isHidden: boolean;
   number: number;
+  isDone: boolean;
+}
+
+export interface TodoByDate {
+  date: TodoListType[];
 }
 
 const todoList: TodoListType[] = [
-
   {
     id: 1,
     todoName: "Finish my React.js tasks",
     date: "20.12.1994",
     isHidden: false,
     number: 1,
+    isDone: false,
   },
   {
     id: 2,
     todoName: "Learn Next.js",
-    date: "20.12.1994",
+    date: "20.12.1995",
     isHidden: false,
     number: 1,
+    isDone: false,
   },
   {
     id: 3,
     todoName: "Learn Node.js",
-    date: "20.12.1994",
+    date: "20.12.1996",
     isHidden: false,
     number: 1,
+    isDone: false,
   },
 ];
 
@@ -38,17 +45,6 @@ export const todoSlice = createSlice({
   initialState: todoList,
   reducers: {
     addTodo: (state, action) => {
-      // let number;
-      // let bool = false;
-
-      // for (let i = 0; i < state.date.length; i++) {
-      //   if (state.dates[i]?.date === action.date) {
-      //     number = state.dates[i]?.number + 1;
-      //     bool = true;
-      //   }
-      // }
-
-      // if (!bool) number = 1;
       return [
         ...state,
         {
@@ -56,6 +52,7 @@ export const todoSlice = createSlice({
           todoName: action.payload.title,
           date: action.payload.date,
           isHidden: false,
+          isDone: false,
           number: action.payload.number,
         },
       ];
@@ -66,31 +63,32 @@ export const todoSlice = createSlice({
       });
     },
     editTodo(state, action) {
+      console.log(state,"edit");
+      
       return state.map((todoItem) => {
+        
         return todoItem.id === action.payload.id
           ? {
               ...todoItem,
               todoName: action.payload.todoName,
-              date: action.payload.date,
             }
           : { ...todoItem };
       });
     },
-    filterTodo(state, action) {
-      const { todoName, date } = action.payload;
+    done(state, action) {
       return state.map((todoItem) => {
-        return {
-          ...todoItem,
-          isHidden:
-            !todoItem.todoName.toLowerCase().includes(todoName) &&
-            !todoItem.date.toLowerCase().includes(date),
-        };
+        return todoItem.id === action.payload.id
+          ? {
+              ...todoItem,
+              isDone: action.payload.isDone,
+            }
+          : { ...todoItem };
       });
     },
   },
 });
 
-export const { addTodo, editTodo, deleteTodo, filterTodo } = todoSlice.actions;
+export const { addTodo, editTodo, deleteTodo, done } = todoSlice.actions;
 export const todo = (state: any) => {
   return state.todo;
 };
