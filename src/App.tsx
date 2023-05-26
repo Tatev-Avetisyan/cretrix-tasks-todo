@@ -1,16 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Main } from "./components";
-import SameDateTodoList from "./components/SameDateTodo/SameDateTodo";
+import SameDateTodo from "./components/SameDateTodo/SameDateTodo";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/todoListByDate/:date" element={<SameDateTodoList />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/todoListByDate/:date" element={<SameDateTodo />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

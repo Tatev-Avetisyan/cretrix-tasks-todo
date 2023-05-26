@@ -1,6 +1,7 @@
 @import "../../../styles/variables/colors.module";
 
 .item {
+  cursor: pointer;
   background-color: $inputBGColor;
   border-radius: 4px;
   display: flex;

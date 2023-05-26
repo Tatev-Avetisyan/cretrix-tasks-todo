@@ -1,14 +1,14 @@
 import { SameDateTodoItem, Title } from "..";
 import BackIcon from "../../assets/backIcon.svg";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { TodoListType, deleteTodo, todo } from "../../redux/TodoSlice";
 
 import styles from "./sameDateTodo.module.scss";
 
 const SameDateTodoList = () => {
-  const dispatch = useDispatch();
-  const todoList = useSelector(todo);
+  const dispatch = useAppDispatch();
+  const todoList = useAppSelector(todo);
   const navigate = useNavigate();
   const { date } = useParams();
 
@@ -21,6 +21,7 @@ const SameDateTodoList = () => {
   const filteredByDate = todoList.filter(
     (el: TodoListType) => el.date === date
   );
+  console.log(todoList);
   console.log(filteredByDate);
 
   return (

@@ -63,10 +63,9 @@ export const todoSlice = createSlice({
       });
     },
     editTodo(state, action) {
-      console.log(state,"edit");
-      
+      console.log(state, "edit");
+
       return state.map((todoItem) => {
-        
         return todoItem.id === action.payload.id
           ? {
               ...todoItem,

@@ -1,6 +1,6 @@
-import { Button, EditItem, Text } from "../..";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { Button, EditItem, Text } from "../..";
+import { useAppDispatch } from "../../../redux/store";
 import { done, editTodo } from "../../../redux/TodoSlice";
 
 import styles from "./todo.module.scss";
@@ -14,7 +14,7 @@ const SameDateTodoItem: React.FC<{
   const [isVisible, setIsVisible] = useState(false);
   const [title, setTitle] = useState(item.todoName);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onEditTodo = () => {
     dispatch(editTodo({ id: item.id, todoName: title }));

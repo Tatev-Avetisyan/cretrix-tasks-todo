@@ -2,6 +2,7 @@
 
 @mixin boxStyle($height: 112px, $justify-content: space-between) {
   width: 614px;
+  min-height: 100px;
   height: $height;
   padding: 1% 0;
   border-radius: 8px;
@@ -10,6 +11,3 @@
   justify-content: $justify-content;
   background-color: $headerBGColor;
 }
-
-
-

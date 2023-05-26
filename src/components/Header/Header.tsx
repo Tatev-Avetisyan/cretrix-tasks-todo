@@ -1,17 +1,19 @@
-import React from "react";
-import { useState } from "react";
-import { Button, Input, Title,Text } from "..";
+import React, { FC, FormEvent, useState } from "react";
+import { Button, Input, Title, Text } from "..";
 import { addTodo } from "../../redux/TodoSlice";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../redux/store";
+
 
 import styles from "./header.module.scss";
 
-const Header = () => {
+const Header: FC = () => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const onAddTodo = () => {
+  const onAddTodo = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (title !== "" && date !== "") {
       dispatch(addTodo({ title, date }));
       setTitle("");
@@ -30,8 +32,8 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <Title context="To do list" />
-      <div className={styles.inputWrapper}>
-        <Text  extraStyle={styles.text} context="New Task"/>
+      <form className={styles.inputWrapper} onSubmit={onAddTodo}>
+        <Text extraStyle={styles.text} context="New Task" />
         <div className={styles.inputPart}>
           <Input
             onChange={handleTitleChange}
@@ -46,9 +48,14 @@ const Header = () => {
             extraStyle={styles.inpSecond}
             type="date"
           />
-          <Button onClick={onAddTodo} extraStyle={styles.add} context="ADD" />
+          <Button
+            onClick={onAddTodo}
+            extraStyle={styles.add}
+            context="ADD"
+            type="submit"
+          />
         </div>
-      </div>
+      </form>
     </header>
   );
 };
