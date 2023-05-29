@@ -6,7 +6,7 @@ const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/todoListByDate/:date" element={<SameDateTodo />} />
+      <Route path="/todoListByDate/:date/:count" element={<SameDateTodo />} />
     </Routes>
   </BrowserRouter>
 );

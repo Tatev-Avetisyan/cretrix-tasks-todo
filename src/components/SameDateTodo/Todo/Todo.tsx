@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, EditItem, Text } from "../..";
+import { Button, EditItem } from "../..";
 import { useAppDispatch } from "../../../redux/store";
 import { done, editTodo } from "../../../redux/TodoSlice";
 
@@ -42,20 +42,24 @@ const SameDateTodoItem: React.FC<{
   return (
     <>
       <div className={styles.item}>
-        <input
-          className={`${styles.checkbox} ${isChecked ? styles.done : ""}`}
-          onClick={handleCheckboxChange}
-          type="checkbox"
-          checked={item.isDone}
-        />
-        <Text
-          extraStyle={`${styles.todoName} ${
-            isChecked ? styles.titleDone : ""
-          } `}
-          context={todoName}
-        />
-        <Button onClick={onShowEdit} extraStyle={styles.btn} context="Edit" />
-        <Button onClick={onClick} extraStyle={styles.delete} context="Delete" />
+        <label
+          className={`${styles.todo}  ${isChecked ? styles.titleDone : ""}`}
+        >
+          <input type="checkbox" checked={item.isDone} />
+          <span
+            onClick={handleCheckboxChange}
+            className={`${styles.todoName} `}
+          />
+          {todoName}
+        </label>
+        <div>
+          <Button onClick={onShowEdit} extraStyle={styles.btn} context="Edit" />
+          <Button
+            onClick={onClick}
+            extraStyle={styles.delete}
+            context="Delete"
+          />
+        </div>
       </div>
       <EditItem
         onHandleEdit={onEditTodo}

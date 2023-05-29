@@ -10,7 +10,7 @@ const SameDateTodoList = () => {
   const dispatch = useAppDispatch();
   const todoList = useAppSelector(todo);
   const navigate = useNavigate();
-  const { date } = useParams();
+  const { date, count } = useParams();
 
   const reverseDate = date?.split(".").reverse().join("-");
 
@@ -31,7 +31,10 @@ const SameDateTodoList = () => {
           <img src={BackIcon} alt="Back" />
           Go Back
         </button>
-        <Title extraStyle={styles.text} context={reverseDate || ""} />
+        <Title
+          extraStyle={styles.text}
+          context={`${reverseDate || ""}(${count})`}
+        />
       </div>
       <div className={styles.taskList}>
         {filteredByDate.map((item: TodoListType) => {

@@ -25,7 +25,7 @@
 
     .backBtn {
       background-color: $inputBGColor;
-      color: #2b2b2b;
+      color: $titleColor;
       font-weight: 700;
       font-size: 1.6rem;
       gap: 10%;
@@ -34,7 +34,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid #f2f2f7;
+      border: 1px solid $headerBGColor;
       border-radius: 4px;
 
       &:hover {
@@ -42,13 +42,13 @@
       }
     }
     .text {
-      font-family: "Open Sans";
-      font-style: normal;
+      letter-spacing: 2px;
       font-weight: 700;
       font-size: 24px;
       line-height: 32px;
       display: flex;
       align-items: center;
+      color:$titleColor
     }
   }
   .taskList {
