@@ -47,12 +47,21 @@
         &::-webkit-datetime-edit-month-field {
           color: $inputPlaceholderColor;
         }
+
         &::-webkit-datetime-edit-day-field {
           color: $inputPlaceholderColor;
         }
         &::-webkit-datetime-edit-year-field {
           color: $inputPlaceholderColor;
         }
+        // &::-webkit-datetime-edit-fields-wrapper::after {
+        //   content: "-";
+        //   position: absolute;
+        //   top: 50%;
+        //   left: 50%;
+        //   transform: translate(-50%, -50%);
+        //   color: $inputPlaceholderColor;
+        // }
       }
       .add {
         width: 17%;
