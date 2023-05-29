@@ -13,8 +13,8 @@ const TodoItem: React.FC<DataType> = ({ date, number }) => {
     <div className={styles.item}>
       {reverseDate} {`(${number})`}
       <Link to={`/todoListByDate/${date}`}>
-        <button onClick={() => console.log(1)} className={styles.image}>
-          <img  src={Next} alt="next" />
+        <button className={styles.image}>
+          <img src={Next} alt="next" />
         </button>
       </Link>
     </div>

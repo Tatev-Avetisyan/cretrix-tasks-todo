@@ -23,7 +23,7 @@ const SameDateTodoItem: React.FC<{
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    dispatch(done({ isDone: !isChecked }));
+    dispatch(done({ isDone: !isChecked, id: item.id }));
     console.log(isChecked);
   };
 
@@ -43,9 +43,10 @@ const SameDateTodoItem: React.FC<{
     <>
       <div className={styles.item}>
         <input
-          className={styles.checkbox}
+          className={`${styles.checkbox} ${isChecked ? styles.done : ""}`}
           onClick={handleCheckboxChange}
           type="checkbox"
+          checked={item.isDone}
         />
         <Text
           extraStyle={`${styles.todoName} ${
