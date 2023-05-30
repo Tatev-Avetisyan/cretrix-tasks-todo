@@ -24,7 +24,6 @@ const SameDateTodoItem: React.FC<{
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
     dispatch(done({ isDone: !isChecked, id: item.id }));
-    console.log(isChecked);
   };
 
   const onShowEdit = () => {
@@ -45,7 +44,7 @@ const SameDateTodoItem: React.FC<{
         <label
           className={`${styles.todo}  ${isChecked ? styles.titleDone : ""}`}
         >
-          <input type="checkbox" checked={item.isDone} />
+          <input type="checkbox" defaultChecked={item.isDone} />
           <span
             onClick={handleCheckboxChange}
             className={`${styles.todoName} `}

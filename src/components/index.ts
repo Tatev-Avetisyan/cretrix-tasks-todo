@@ -4,6 +4,7 @@ export { default as TodoList } from "./TodoList/TodoList";
 export { default as TodoItem } from "./TodoList/TodoItem/TodoItem";
 export { default as EditItem } from "./SameDateTodo/EditIem/EditItem";
 export { default as SameDateTodoItem } from "./SameDateTodo/Todo/Todo";
+export { default as SameDateHeader } from "./SameDateTodo/SameDateHeader/SameDateHeader";
 
 //shared
 export { default as Button } from "../shared/Button/Button";

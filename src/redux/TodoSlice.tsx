@@ -9,10 +9,6 @@ export interface TodoListType {
   isDone: boolean;
 }
 
-export interface TodoByDate {
-  date: TodoListType[];
-}
-
 const todoList: TodoListType[] = [
   {
     id: 1,
@@ -63,8 +59,6 @@ export const todoSlice = createSlice({
       });
     },
     editTodo(state, action) {
-      console.log(state, "edit");
-
       return state.map((todoItem) => {
         return todoItem.id === action.payload.id
           ? {

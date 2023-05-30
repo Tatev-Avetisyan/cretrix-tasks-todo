@@ -4,19 +4,27 @@ import { useAppSelector } from "../../redux/store";
 
 import styles from "./todoList.module.scss";
 
+interface SameDateObjType {
+  id: number;
+  date: string;
+  count: number;
+}
+
 const TodoList = () => {
   const todoList = useAppSelector(todo);
 
-  const result: any[] = [];
+  const result: SameDateObjType[] = [];
   todoList.forEach((item: any) => {
-    let resObj = result.find((resObj) => resObj.date === item.date);
-    resObj ? resObj.count++ : result.push({ date: item.date, count: 1 });
+    let sameObj = result.find((sameDate) => sameDate.date === item.date);
+    sameObj
+      ? sameObj.count++
+      : result.push({ date: item.date, count: 1, id: Math.random() });
   });
 
   return (
     <div className={styles.wrapper}>
       <Text extraStyle={styles.text} context="Dates" />
-      {result.map((item: any) => {
+      {result.map((item: SameDateObjType) => {
         return <TodoItem key={item.id} date={item.date} number={item.count} />;
       })}
     </div>

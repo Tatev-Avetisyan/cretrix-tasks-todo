@@ -7,49 +7,10 @@
   min-height: 328px;
   height: fit-content;
   padding: 1.5%;
-  // left: 389px;
-  // top: 226px;
   background: $inputBGColor;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  .header {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 2%;
-    gap: 5%;
-
-    .backBtn {
-      background-color: $inputBGColor;
-      color: $titleColor;
-      font-weight: 700;
-      font-size: 1.6rem;
-      gap: 10%;
-      width: 120px;
-      height: 48px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid $headerBGColor;
-      border-radius: 4px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .text {
-      letter-spacing: 2px;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 32px;
-      display: flex;
-      align-items: center;
-      color: $titleColor;
-    }
-  }
   .taskList {
     @include boxStyle(flex-start);
   }
