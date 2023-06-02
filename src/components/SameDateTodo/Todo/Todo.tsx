@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, EditItem } from "../..";
 import { useAppDispatch } from "../../../redux/store";
-import { done, editTodo } from "../../../redux/TodoSlice";
+import { done, editTodo } from "../../../redux/TodoSlice.tsx/TodoSlice";
 
 import styles from "./todo.module.scss";
 
@@ -9,21 +9,23 @@ const SameDateTodoItem: React.FC<{
   todoName: string;
   onClick: any;
   item: any;
-}> = ({ todoName, onClick, item }) => {
-  const [isChecked, setIsChecked] = useState(item.isDone);
+  taskName: string;
+  isDone: boolean;
+}> = ({ todoName, onClick, item, taskName, isDone }) => {
+  const [isChecked, setIsChecked] = useState(isDone);
   const [isVisible, setIsVisible] = useState(false);
-  const [title, setTitle] = useState(item.todoName);
+  const [title, setTitle] = useState(taskName);
 
   const dispatch = useAppDispatch();
 
   const onEditTodo = () => {
-    dispatch(editTodo({ id: item.id, todoName: title }));
+    dispatch(editTodo({ id: item, todoName: title }));
     setIsVisible(false);
   };
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    dispatch(done({ isDone: !isChecked, id: item.id }));
+    dispatch(done({ isDone: !isChecked, id: item }));
   };
 
   const onShowEdit = () => {
@@ -44,7 +46,7 @@ const SameDateTodoItem: React.FC<{
         <label
           className={`${styles.todo}  ${isChecked ? styles.titleDone : ""}`}
         >
-          <input type="checkbox" defaultChecked={item.isDone} />
+          <input type="checkbox" defaultChecked={isDone} />
           <span
             onClick={handleCheckboxChange}
             className={`${styles.todoName} `}

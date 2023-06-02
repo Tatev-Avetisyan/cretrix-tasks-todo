@@ -1,10 +1,15 @@
 import { SameDateHeader, SameDateTodoItem } from "..";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { TodoListType, deleteTodo, todo } from "../../redux/TodoSlice";
 
 import "../Main/main.module.scss";
 import styles from "./sameDateTodo.module.scss";
+import {
+  TodoListType,
+  deleteTodo,
+  todo,
+  todoByDateType,
+} from "../../redux/TodoSlice.tsx/TodoSlice";
 
 const SameDateTodoList = () => {
   const dispatch = useAppDispatch();
@@ -20,19 +25,29 @@ const SameDateTodoList = () => {
       <div className={styles.wrapper}>
         <SameDateHeader />
         <div className={styles.taskList}>
-          {filteredByDate.map((item: TodoListType) => {
+          {filteredByDate.map((item: todoByDateType & TodoListType) => {
             return (
               <div
                 key={item.id}
-                style={{ width: "100%", display: item.isHidden ? "none" : "" }}
+                style={{
+                  width: "100%",
+                  display: item.isHidden ? "none" : "",
+                }}
               >
-                <SameDateTodoItem
-                  item={item}
-                  onClick={() => {
-                    dispatch(deleteTodo({ id: item.id }));
-                  }}
-                  todoName={item.todoName}
-                />
+                {item.todoByDate.map((itemByDate) => {
+                  return (
+                    <SameDateTodoItem
+                      isDone={itemByDate.isDone}
+                      key={itemByDate.idByDate}
+                      item={itemByDate.idByDate}
+                      taskName={itemByDate.todoName}
+                      onClick={() => {
+                        dispatch(deleteTodo({ id: itemByDate.idByDate }));
+                      }}
+                      todoName={itemByDate.todoName}
+                    />
+                  );
+                })}
               </div>
             );
           })}

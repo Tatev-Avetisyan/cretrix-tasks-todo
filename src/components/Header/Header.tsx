@@ -1,8 +1,7 @@
-import React, { FC, FormEvent, useState } from "react";
 import { Button, Input, Title, Text } from "..";
-import { addTodo } from "../../redux/TodoSlice";
 import { useAppDispatch } from "../../redux/store";
-
+import React, { FC, FormEvent, useState } from "react";
+import { addTodo } from "../../redux/TodoSlice.tsx/TodoSlice";
 
 import styles from "./header.module.scss";
 
