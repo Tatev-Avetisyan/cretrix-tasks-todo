@@ -1,81 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { todoList } from "./DummyData";
 
-export interface todoByDateType {
-  idByDate: number;
-  todoName: string;
-  isHidden: boolean;
-  isDone: boolean;
-}
 
-export interface TodoListType {
-  date: string;
-  id: number;
-  count: number;
-  todoByDate: todoByDateType[];
-}
 
-const todoList: TodoListType[] = [
-  {
-    date: "2023-05-10",
-    id: 1,
-    count: 1,
-    todoByDate: [
-      {
-        idByDate: Math.random(),
-        todoName: "Finish my React.js tasks",
-        isHidden: false,
-        isDone: false,
-      },
-    ],
-  },
-  {
-    date: "2023-05-20",
-    id: Math.random(),
-    count: 1,
-    todoByDate: [
-      {
-        idByDate: Math.random(),
-        todoName: "Learn Next.js",
-        isHidden: false,
-        isDone: false,
-      },
-    ],
-  },
-  {
-    date: "2023-05-29",
-    id: Math.random(),
-    count: 1,
-    todoByDate: [
-      {
-        idByDate: Math.random(),
-        todoName: "Finish tasks",
-        isHidden: false,
-        isDone: false,
-      },
-    ],
-  },
-  {
-    date: "2023-05-30",
-    id: Math.random(),
-    count: 2,
-    todoByDate: [
-      {
-        idByDate: Math.random(),
-        todoName: "Tasks",
-        isHidden: false,
-        isDone: false,
-      },
-      {
-        idByDate: Math.random(),
-        todoName: "Call Ann",
-        isHidden: false,
-        isDone: false,
-      },
-    ],
-  },
-];
-
-export const newTodoSlice = createSlice({
+export const todoSlice = createSlice({
   name: "todoSlice",
   initialState: todoList,
   reducers: {
@@ -225,8 +153,8 @@ export const newTodoSlice = createSlice({
   },
 });
 
-export const { addTodo, editTodo, deleteTodo, done } = newTodoSlice.actions;
+export const { addTodo, editTodo, deleteTodo, done } = todoSlice.actions;
 export const todo = (state: any) => {
   return state.todo;
 };
-export default newTodoSlice.reducer;
+export default todoSlice.reducer;
