@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { todoList } from "./DummyData";
 
-
-
 export const todoSlice = createSlice({
   name: "todoSlice",
   initialState: todoList,

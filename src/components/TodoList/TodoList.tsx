@@ -1,6 +1,7 @@
 import { TodoItem, Text } from "..";
+import { TodoListType } from "../../redux/TodoSlice.tsx/DummyData";
+import { todo } from "../../redux/TodoSlice.tsx/TodoSlice";
 import { useAppSelector } from "../../redux/store";
-import { TodoListType, todo } from "../../redux/TodoSlice.tsx/TodoSlice";
 
 import styles from "./todoList.module.scss";
 

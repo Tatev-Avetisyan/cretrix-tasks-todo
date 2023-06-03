@@ -4,12 +4,11 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 import "../Main/main.module.scss";
 import styles from "./sameDateTodo.module.scss";
+import { deleteTodo, todo } from "../../redux/TodoSlice.tsx/TodoSlice";
 import {
   TodoListType,
-  deleteTodo,
-  todo,
   todoByDateType,
-} from "../../redux/TodoSlice.tsx/TodoSlice";
+} from "../../redux/TodoSlice.tsx/DummyData";
 
 const SameDateTodoList = () => {
   const dispatch = useAppDispatch();
