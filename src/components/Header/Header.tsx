@@ -8,6 +8,7 @@ import styles from "./header.module.scss";
 const Header: FC = () => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [error, setError] = useState({ title: false, date: false });
   const dispatch = useAppDispatch();
 
   const onAddTodo = (event: FormEvent<HTMLFormElement>) => {
@@ -15,16 +16,21 @@ const Header: FC = () => {
 
     if (title !== "" && date !== "") {
       dispatch(addTodo({ title, date }));
+      setError({ title: false, date: false });
       setTitle("");
       setDate("");
+    } else {
+      setError({ title: title === "", date: date === "" });
     }
   };
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError({ ...error, title: false });
     setTitle(e.target.value);
   };
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError({ ...error, date: false });
     setDate(e.target.value);
   };
 
@@ -37,14 +43,17 @@ const Header: FC = () => {
           <Input
             onChange={handleTitleChange}
             value={title}
-            placeholder="Type here"
-            extraStyle={styles.inpFirst}
+            placeholder="Add Todo Title"
+            extraStyle={`${styles.inpFirst} ${error.title ? styles.error : ""}`}
             type="text"
           />
+
           <Input
             onChange={handleDateChange}
             value={date}
-            extraStyle={styles.inpSecond}
+            extraStyle={`${styles.inpSecond}  ${
+              error.date ? styles.error : ""
+            }`}
             type="date"
           />
           <Button
